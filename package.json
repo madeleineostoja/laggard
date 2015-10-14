@@ -1,0 +1,56 @@
+{
+  "name": "laggard",
+  "version": "0.1.0",
+  "description": "Automagical CSS fallbacks for legacy browsers, built on PostCSS",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "legacy"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seaneking/laggard.git"
+  },
+  "author": "Sean King <sean@seanking.org>",
+  "maintainers": [
+    {
+      "name": "Sean King",
+      "email": "sean@seanking.org",
+      "web": "https://twitter.com/seaneking"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/seaneking/laggard/issues"
+  },
+  "bin": {
+    "laggard": "./bin/cmd.js"
+  },
+  "engines": {
+    "node": ">= 0.12.0"
+  },
+  "homepage": "https://github.com/seaneking/laggard",
+  "dependencies": {
+    "minimist": "^1.2.0",
+    "pixrem": "^3.0.0",
+    "postcss": "^5.0.0",
+    "postcss-color-rgba-fallback": "^2.0.0",
+    "postcss-opacity": "^3.0.0",
+    "postcss-pseudoelements": "^3.0.0",
+    "postcss-reporter": "^1.2.1",
+    "postcss-vmin": "^2.0.0",
+    "postcss-will-change": "^1.0.0",
+    "read-file-stdin": "^0.2.0",
+    "write-file-stdout": "0.0.2"
+  },
+  "devDependencies": {
+    "gulp-eslint": "^0.12.0",
+    "gulp-mocha": "^2.0.1",
+    "chai": "^2.3.0",
+    "gulp": "^3.8.11"
+  },
+  "scripts": {
+    "test": "gulp check"
+  }
+}

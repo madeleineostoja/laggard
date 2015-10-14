@@ -1,0 +1,7 @@
+Usage: laggard [input] [output] {OPTIONS}
+
+Options:
+
+    --version,    -v    Show the version number.
+
+    --help,       -h    Show this help screen.
