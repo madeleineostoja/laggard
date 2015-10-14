@@ -5,7 +5,9 @@ Automagical CSS fallbacks for legacy browsers, built on [PostCSS][postcss].
 
 Laggard is a pack of community PostCSS plugins that insert common CSS property fallbacks for legacy browsers (<IE8). For a full list of plugins and attributions, have a look at CONTRIBUTORS.md.
 
-Laggard **does not** transpile future CSS syntax. For that use [cssnext][cssnext], which also includes most of these legacy fallbacks. Use Laggard if you just want to easily improve legacy support with current CSS code.
+Laggard **does not** transpile future CSS syntax. For that use [cssnext][cssnext], which also includes most of these legacy fallbacks. Laggard also doesn't do destructive transforms that would require you to use a separate stylesheet for legacy browsers. If that's what you're after use [Oldie][oldie]. 
+
+Use Laggard if you just want to easily improve legacy support with your current CSS code.
 
 --
 
@@ -172,3 +174,4 @@ MIT © [Sean King](https://twitter.com/seaneking)
 [postcss]: https://github.com/postcss/postcss
 [cssnext]: http://cssnext.io/
 [poststylus]: https://github.com/seaneking/poststylus
+[oldie]: https://github.com/jonathantneal/oldie
