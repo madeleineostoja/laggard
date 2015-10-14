@@ -83,24 +83,6 @@ html {
 }
 ```
 
-_Rem unit fallbacks_
-```css
-html {
-  font-size: 16px;
-}
-
-/* Before */
-.foo {
-  font-size: 2rem;
-}
-
-/* After */
-.foo {
-  font-size: 32px;
-  font-size: 2rem;
-}
-```
-
 _PseudoElement conversions_
 ```css
 /* Before */
