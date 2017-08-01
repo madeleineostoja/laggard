@@ -1,6 +1,6 @@
 {
   "name": "laggard",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Automatic CSS fallbacks for legacy browsers, built on PostCSS",
   "scripts": {
     "test": "mocha test --reporter nyan",
