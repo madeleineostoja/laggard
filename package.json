@@ -2,6 +2,10 @@
   "name": "laggard",
   "version": "0.1.0",
   "description": "Automatic CSS fallbacks for legacy browsers, built on PostCSS",
+  "scripts": {
+    "test": "mocha test --reporter nyan",
+    "posttest": "eslint ."
+  },
   "keywords": [
     "postcss",
     "css",
@@ -45,12 +49,8 @@
     "write-file-stdout": "0.0.2"
   },
   "devDependencies": {
-    "gulp-eslint": "^4.0.0",
-    "gulp-mocha": "^4.3.1",
     "chai": "^4.1.0",
-    "gulp": "^3.8.11"
-  },
-  "scripts": {
-    "test": "gulp check"
+    "eslint": "^4.3.0",
+    "mocha": "^3.5.0"
   }
 }
