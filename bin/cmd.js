@@ -1,23 +1,22 @@
 #!/usr/bin/env node
+/*eslint no-console: 0, no-undef: 0*/
 
 const fs = require('fs');
-const path = require('path');
 const read = require('read-file-stdin');
 const write = require('write-file-stdout');
-const laggard = require('../');
 const minimist = require('minimist');
+const laggard = require('../');
 
-// Set shorthand aliases for options
-const OPTS = minimist(process.argv.slice(2),
-      {
-        alias: {
-          h: 'help',
-          v: 'version'
-        }
-      }
-    ),
-    FILE = OPTS._[0],
-    OUT = OPTS._[1];
+const OPTS = minimist(process.argv.slice(2), {
+    boolean: [ 's' ],
+    alias: {
+      h: 'help',
+      s: 'sourcemap',
+      v: 'version'
+    }
+  }),
+  FILE = OPTS._[0],
+  OUT = OPTS._[1];
 
 // Fetch verion from package.json
 if (OPTS.version) {
@@ -28,22 +27,20 @@ if (OPTS.version) {
 if (FILE === 'help' || OPTS.help) {
   return fs.createReadStream(path.join(__dirname, '/help.txt'))
     .pipe(process.stdout)
-    .on('close', () => {
-      process.exit(1);
-    });
+    .on('close', () => process.exit(1));
 }
 
-read(FILE, (err, buf) => {
+read(FILE, function (err, buf) {
   if (err) {
     throw err;
   }
-
-  if (FILE) {
-    OPTS.from = FILE;
-  }
-
-  if (OUT) {
-    OPTS.to = OUT;
-  }
-  write(OUT, laggard.process(String(buf)));
+  laggard.process(String(buf), { from: FILE, to: OUT }).then(function (result) {
+    write(OUT, result.css);
+    if (OPTS.map && OPTS.to) {
+      fs.writeFile(OPTS.to + '.map', result.map.toString());
+    }
+  }).catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
 });
