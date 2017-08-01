@@ -170,6 +170,7 @@ Option              | Type    | Default | Description
 `vmin`              | Boolean | `true`  | Whether to enable to enable vmin fallbacks
 `pixrem`            | Boolean | `true`  | Whether to enable whether to enable rem fallbacks
 `willchange`        | Boolean | `true`  | Whether to enable native will-change fallbacks
+`reporter`          | Boolean | `false` | Whether to log errors from plugins
 
 ```js
 // Set in build tool, etc.

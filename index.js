@@ -1,67 +1,68 @@
-'use strict';
+const postcss = require('postcss');
 
-var $postcss = require('postcss');
+const PLUGINS = [
+        {
+          option: 'rgba',
+          module: require('postcss-color-rgba-fallback')
+        },
+        {
+          option: 'opacity',
+          module: require('postcss-opacity')
+        },
+        {
+          option: 'pseudo',
+          module: require('postcss-pseudoelements')
+        },
+        {
+          option: 'vmin',
+          module: require('postcss-vmin')
+        },
+        {
+          option: 'pixrem',
+          module: require('pixrem')
+        },
+        {
+          option: 'willchange',
+          module: require('postcss-will-change')
+        },
+        {
+          option: 'reporter',
+          module: require('postcss-reporter')
+        },
+      ],
+      DEFAULTS = {
+        rgba: true,
+        opacity: true,
+        pseudo: true,
+        vmin: true,
+        pixrem: true,
+        willchange: true,
+        reporter: false
+      };
 
-var processors = {
-      rgba: require('postcss-color-rgba-fallback'),
-      opacity: require('postcss-opacity'),
-      pseudo: require('postcss-pseudoelements'),
-      vmin: require('postcss-vmin'),
-      pixrem: require('pixrem'),
-      willchange: require('postcss-will-change')
-    };
-
-// Error reporting
-var reporter = require('postcss-reporter');
-
-// Build PostCSS plugin
-var laggard = $postcss.plugin('laggard', function(options) {
-
-  var postcss = $postcss(),
-      plugins = [];
-
+// Export PostCSS bundle
+module.exports = postcss.plugin('laggard', options => {
   options = options || {};
 
-  Object.keys(processors).forEach(function(feature){
-    var processor = processors[feature];
+  let config = Object.assign({}, DEFAULTS, options),
+      bundle = postcss();
 
-    if (options[feature] !== false) {
-
-      if (processor instanceof Array) {
-        plugins = plugins.concat(processor);
-      } else {
-        plugins.push(processor);
-      }
-
-    }
+  PLUGINS.forEach(plugin => {
+    config[plugin.option] && bundle.use(plugin.module);
   });
 
-  plugins.push(reporter);
-
-  // Build PostCSS bundle
-  plugins.forEach(function(plugin){
-    postcss.use(plugin);
-  });
-
-  return postcss;
-
+  return bundle;
 });
 
-// Export new PostCSS processor, bundled with plugins
-module.exports = laggard;
-
-module.exports.process = function(css, options) {
+module.exports.process = (css, options) => {
   options = options || {};
   options.map = options.map || (options.sourcemap ? true : null);
 
-  var result = $postcss([laggard(options)]).process(css, options);
+  let result = postcss([laggard(options)]).process(css, options);
 
-  // return a css string if inline/no sourcemap.
   if (options.map === null || options.map === true || options.map && options.map.inline) {
-      return result.css;
+    return result.css;
   }
 
-  // otherwise return an object of css & map
   return result;
-
 };
