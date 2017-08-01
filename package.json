@@ -1,7 +1,7 @@
 {
   "name": "laggard",
   "version": "0.1.0",
-  "description": "Automagical CSS fallbacks for legacy browsers, built on PostCSS",
+  "description": "Automatic CSS fallbacks for legacy browsers, built on PostCSS",
   "keywords": [
     "postcss",
     "css",
@@ -33,21 +33,21 @@
   "homepage": "https://github.com/seaneking/laggard",
   "dependencies": {
     "minimist": "^1.2.0",
-    "pixrem": "^3.0.0",
-    "postcss": "^5.0.0",
-    "postcss-color-rgba-fallback": "^2.0.0",
-    "postcss-opacity": "^3.0.0",
-    "postcss-pseudoelements": "^3.0.0",
-    "postcss-reporter": "^1.2.1",
-    "postcss-vmin": "^2.0.0",
-    "postcss-will-change": "^1.0.0",
+    "pixrem": "^4.0.1",
+    "postcss": "^6.0.8",
+    "postcss-color-rgba-fallback": "^3.0.0",
+    "postcss-opacity": "^5.0.0",
+    "postcss-pseudoelements": "^5.0.0",
+    "postcss-reporter": "^5.0.0",
+    "postcss-vmin": "^3.0.0",
+    "postcss-will-change": "^2.0.0",
     "read-file-stdin": "^0.2.0",
     "write-file-stdout": "0.0.2"
   },
   "devDependencies": {
-    "gulp-eslint": "^0.12.0",
-    "gulp-mocha": "^2.0.1",
-    "chai": "^2.3.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-mocha": "^4.3.1",
+    "chai": "^4.1.0",
     "gulp": "^3.8.11"
   },
   "scripts": {
