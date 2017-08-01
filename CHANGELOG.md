@@ -1,5 +1,8 @@
 # Change Log
 
+## [v2.0.0](https://github.com/seaneking/laggard/tree/v2.0.0) (2017-08-01)
+[Full Changelog](https://github.com/seaneking/laggard/compare/v1.0.0...v2.0.0)
+
 ## [v1.0.0](https://github.com/seaneking/laggard/tree/v1.0.0) (2017-08-01)
 
 
