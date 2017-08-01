@@ -1,32 +1,47 @@
-# laggard
-[![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# Laggard
+[![NPM version][npm-badge]][npm-url] [![Downloads][npm-downloads]][npm-url]  [![Build Status][travis-badge]][travis-url]
 
-Automagical CSS fallbacks for legacy browsers, built on [PostCSS][postcss].
+Laggard automatically generates safe CSS fallbacks for legacy (<IE9) browsers. It's built on [PostCSS][postcss].
 
-Laggard is a pack of community PostCSS plugins that insert common CSS property fallbacks for legacy browsers (<IE8). For a full list of plugins and attributions, have a look at CONTRIBUTORS.md.
-
-Laggard **does not** transpile future CSS syntax. For that use [cssnext][cssnext], which also includes most of these legacy fallbacks. Laggard also doesn't do destructive transforms that would require you to use a separate stylesheet for legacy browsers. If that's what you're after use [Oldie][oldie]. 
+Laggard does not transpile future CSS syntax. For that use [cssnext][cssnext]. Laggard also doesn't do destructive transforms that would require you to use a separate stylesheet for legacy browsers. If that's what you're after use [Oldie][oldie]. 
 
 Use Laggard if you just want to easily improve legacy support with your current CSS code.
 
---
+### Contents
 
-### Install
+- [Install](#install)
+- [Usage](#usage)
+- [Features](#features)
+  - [Opacity fallbacks](#opacity-fallbacks)
+  - [Rem unit fallbacks](#rem-unit-fallbacks)
+  - [Pseudo element conversions](#pseudo-element-conversions)
+  - [RGBA Hex fallbacks](#rgba-hex-fallbacks)
+  - [IE vmin to vm fallbacks](#ie-vmin-to-vm-fallbacks)
+  - [3D transform hack for will-change](#3d-transform-hack-for-will-change)
+- [Options](#options)
+
+## Install
+
+Laggard is available on NPM as `laggard`, install it with NPM or Yarn
+
 
 ```sh
-$ npm install --save laggard
+$ yarn add laggard --dev
 ```
 
-<br/>
+```sh
+$ npm i laggard --save-dev
+```
 
-### Usage
+## Usage
 
 ###### Build tools
+
 Use Laggard as a PostCSS plugin in your build tool of choice.
 
 ```js
-var postcss = require('postcss'),
-    laggard = require('laggard');
+const postcss = require('postcss');
+const laggard = require('laggard');
 
 postcss([ laggard ])
 ```
@@ -34,6 +49,7 @@ postcss([ laggard ])
 See [PostCSS][postcss] docs for examples for your particular environment.
 
 ###### CLI
+
 Process CSS directly on the command line
 
 ```sh
@@ -41,6 +57,7 @@ $ laggard src/style.css style.css [options]
 ```
 
 ###### Stylus
+
 Laggard can be used directly as a Stylus plugin with [PostStylus][poststylus]
 
 ```js
@@ -49,11 +66,10 @@ stylus(css).use(poststylus('laggard'))
 
 See the [PostStylus Docs][poststylus] for more examples for your environment.
 
---
+## Features
 
-### Features
+#### Opacity fallbacks
 
-_Opacity ms-filter fallbacks_
 ```css
 /* Before */
 .foo {
@@ -67,7 +83,8 @@ _Opacity ms-filter fallbacks_
 }
 ```
 
-_Rem unit fallbacks_
+#### Rem unit fallbacks
+
 ```css
 html {
   font-size: 16px;
@@ -85,7 +102,8 @@ html {
 }
 ```
 
-_PseudoElement conversions_
+#### Pseudo element conversions
+
 ```css
 /* Before */
 .foo::before {
@@ -98,7 +116,7 @@ _PseudoElement conversions_
 }
 ```
 
-_RGBA Hex fallbacks_
+#### RGBA Hex fallbacks
 ```css
 /* Before */
 .foo {
@@ -112,7 +130,7 @@ _RGBA Hex fallbacks_
 }
 ```
 
-_IE vmin to vm fallbacks_
+#### IE vmin to vm fallbacks
 ```css
 /* Before */
 .foo {
@@ -126,7 +144,7 @@ _IE vmin to vm fallbacks_
 }
 ```
 
-_3D transform hack for will-change_
+#### 3D transform hack for will-change
 ```css
 /* Before */
 .foo {
@@ -140,18 +158,18 @@ _3D transform hack for will-change_
 }
 ```
 
---
+## Options
 
-### Options
 All features in Laggard can be toggled on or off by passing options on initialization. By default all features are set to `true`.
 
-Feature toggles:
-- `rgba`
-- `opacity`
-- `pseudo`
-- `vmin`
-- `pixrem`
-- `willchange`
+Option              | Type    | Default | Description                                                     
+------------------- | ------- | ------- | -----------                                                     
+`rgba`              | Boolean | `true`  | Whether to enable RGBA fallbacks
+`opacity`           | Boolean | `true`  | Whether to enable opacity fallbacks
+`pseudo`            | Boolean | `true`  | Whether to enable pseudo element conversion
+`vmin`              | Boolean | `true`  | Whether to enable to enable vmin fallbacks
+`pixrem`            | Boolean | `true`  | Whether to enable whether to enable rem fallbacks
+`willchange`        | Boolean | `true`  | Whether to enable native will-change fallbacks
 
 ```js
 // Set in build tool, etc.
@@ -159,18 +177,16 @@ Feature toggles:
   // options
 })
 ```
---
 
-### License
+***
 
 MIT © [Sean King](https://twitter.com/seaneking)
 
-[npm-image]: https://badge.fury.io/js/laggard.svg
+[npm-badge]: https://badge.fury.io/js/laggard.svg
 [npm-url]: https://npmjs.org/package/laggard
-[travis-image]: https://travis-ci.org/seaneking/laggard.svg?branch=master
+[npm-downloads]: https://img.shields.io/npm/dm/laggard.svg
+[travis-badge]: https://travis-ci.org/seaneking/laggard.svg?branch=master
 [travis-url]: https://travis-ci.org/seaneking/laggard
-[daviddm-image]: https://david-dm.org/seaneking/laggard.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/seaneking/laggard
 [postcss]: https://github.com/postcss/postcss
 [cssnext]: http://cssnext.io/
 [poststylus]: https://github.com/seaneking/poststylus
