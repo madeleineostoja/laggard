@@ -3,34 +3,34 @@
 const postcss = require('postcss');
 
 const PLUGINS = [
-  {
-    option: 'rgba',
-    module: require('postcss-color-rgba-fallback')
-  },
-  {
-    option: 'opacity',
-    module: require('postcss-opacity')
-  },
-  {
-    option: 'pseudo',
-    module: require('postcss-pseudoelements')
-  },
-  {
-    option: 'vmin',
-    module: require('postcss-vmin')
-  },
-  {
-    option: 'pixrem',
-    module: require('pixrem')
-  },
-  {
-    option: 'willchange',
-    module: require('postcss-will-change')
-  },
-  {
-    option: 'reporter',
-    module: require('postcss-reporter')
-  },
+    {
+      option: 'rgba',
+      module: require('postcss-color-rgba-fallback')
+    },
+    {
+      option: 'opacity',
+      module: require('postcss-opacity')
+    },
+    {
+      option: 'pseudo',
+      module: require('postcss-pseudoelements')
+    },
+    {
+      option: 'vmin',
+      module: require('postcss-vmin')
+    },
+    {
+      option: 'pixrem',
+      module: require('pixrem')
+    },
+    {
+      option: 'willchange',
+      module: require('postcss-will-change')
+    },
+    {
+      option: 'reporter',
+      module: require('postcss-reporter')
+    },
   ],
   DEFAULTS = {
     rgba: true,
