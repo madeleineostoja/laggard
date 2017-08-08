@@ -10,7 +10,6 @@ Use Laggard if you just want to easily improve legacy support with your current 
 ### Contents
 
 - [Install](#install)
-- [Usage](#usage)
 - [Features](#features)
   - [Opacity fallbacks](#opacity-fallbacks)
   - [Rem unit fallbacks](#rem-unit-fallbacks)
@@ -18,6 +17,7 @@ Use Laggard if you just want to easily improve legacy support with your current 
   - [RGBA Hex fallbacks](#rgba-hex-fallbacks)
   - [IE vmin to vm fallbacks](#ie-vmin-to-vm-fallbacks)
   - [3D transform hack for will-change](#3d-transform-hack-for-will-change)
+- [Usage](#usage)
 - [Options](#options)
 
 ## Install
@@ -32,39 +32,6 @@ $ yarn add laggard --dev
 ```sh
 $ npm i laggard --save-dev
 ```
-
-## Usage
-
-###### Build tools
-
-Use Laggard as a PostCSS plugin in your build tool of choice.
-
-```js
-const postcss = require('postcss');
-const laggard = require('laggard');
-
-postcss([ laggard ])
-```
-
-See [PostCSS][postcss] docs for examples for your particular environment.
-
-###### CLI
-
-Process CSS directly on the command line
-
-```sh
-$ laggard src/style.css style.css [options]
-```
-
-###### Stylus
-
-Laggard can be used directly as a Stylus plugin with [PostStylus][poststylus]
-
-```js
-stylus(css).use(poststylus('laggard'))
-```
-
-See the [PostStylus Docs][poststylus] for more examples for your environment.
 
 ## Features
 
@@ -157,6 +124,39 @@ html {
   will-change: transform;
 }
 ```
+
+## Usage
+
+###### Build tools
+
+Use Laggard as a PostCSS plugin in your build tool of choice.
+
+```js
+const postcss = require('postcss');
+const laggard = require('laggard');
+
+postcss([ laggard ])
+```
+
+See [PostCSS][postcss] docs for examples for your particular environment.
+
+###### CLI
+
+Process CSS directly on the command line
+
+```sh
+$ laggard src/style.css style.css [options]
+```
+
+###### Stylus
+
+Laggard can be used directly as a Stylus plugin with [PostStylus][poststylus]
+
+```js
+stylus(css).use(poststylus('laggard'))
+```
+
+See the [PostStylus Docs][poststylus] for more examples for your environment.
 
 ## Options
 
